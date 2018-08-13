@@ -18,8 +18,16 @@ jQuery(document).ready(function () {
 
 
     
-    //var str = $("#visitedCC").val().replace('&#34;','"');
-    //var VisitedCC = Array(str);
+    // var str = $("#visitedCC").val().replace('&#34;','"');
+    // alert(str);
+    // var VisitedCC = Array(str);
+    // var areas = VisitedCC.split(",");
+    //     alert(areas);
+    //     jQuery(areas).each(function () {
+
+    //         jQuery(".section-map-list input[value=" + this + "]").prop("checked", true);
+    //     });
+    //     map.updateSelection();
     //VisitedCC.push(str);
     // alert(VisitedCC);
     // if(Array.isArray( VisitedCC)){

@@ -35,7 +35,7 @@
   <% } %>
   <div class="app">
     <div class="app-body">
-
+      <input type="hidden" id="visitedCC" value="<%=country.length > 0 ? country:''%>"
       <div class="app-section section-map-wrapper">
         <div class="container">
           <div class="row">
@@ -259,7 +259,7 @@
                 <button class="fadeandscale_close btn btn-danger x-button">x</button>
                 <h4 class="popup-head">Visit Information</h4>
                 <form action="" name="frmVisitInfo" id="frmVisitInfo">
-                  <input type="text" name="CountryCodeHiddenText" id="CountryCodeHiddenText" />
+                  <input type="hidden" name="CountryCodeHiddenText" id="CountryCodeHiddenText" />
                   <table style="width: 100%;" class="VisitInfoInputTable">
                     <tbody>
                       <tr>
@@ -311,7 +311,15 @@
   </div>
 
 
-  
+  <script type="text/javascript" src="/resources/js/app.js"></script>
+
+  <script type="text/javascript" src="/resources/ThirdParty/amcharts/lib/ammap.js"></script>
+  <script type="text/javascript" src="/resources/ThirdParty/amcharts/lib/maps/js/worldHigh.js"></script>
+  <script type="text/javascript" src="/resources/ThirdParty/amcharts/lib/plugins/export/export7c3e.js?1190415"></script>
+  <link rel="stylesheet" type="text/css" href="/resources/ThirdParty/amcharts/lib/plugins/export/export.css">
+
+  <script type="text/javascript" src="/resources/ThirdParty/amcharts/themes/app.js"></script>
+
   <script>
     function getCurrentDate() {
       var today = new Date();
@@ -393,10 +401,17 @@
           complete: function (data) {
             //$('#output').html(data.responseText);
             //alert('test');
+            // $('#CountryCodeHiddenText').val(''),
+            // $('#txtVisitDateFrom').val(''),
+            // $('#txtVisitDateTo').val(''),
+            // $('#txtVisitedWith').val(''),
+            // $('#txtVisitedCity').val('')
             location.assign('/home/dashboard');
+            // location.reload();
           }
         });
       });
     });
   </script>
+
   <%- include footer %>
