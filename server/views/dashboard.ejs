@@ -1,0 +1,84 @@
+<%- include header %>
+
+<body>
+  <div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/home/dashboard">Home</a>
+            </li>
+            <li>
+              <a href="/home/map#<%=country%>">Map</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/home/profile">Profile</a>
+            </li>
+            <li>
+              <a href="/home/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+      <!--/.container-fluid -->
+    </nav>
+
+
+      <div class="welcome">
+         
+        <!-- <h1>Welcome</h1>
+        <p>Hello Mr. <%=user.last_name%></p> -->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                My Visited Country, City, Places
+              </h3>
+              
+            </div>
+            <div class="panel-body">
+              
+              <div>
+                  <table class="display" id="MyVisitsTable" >
+                    <thead>
+                      <tr>
+                        <th>SL</th>
+                        <th>Country</th>
+                        <th>City/Place</th>
+                        <th>Travelmates</th>
+                        <th colspan="2">Duration</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% 
+                        var j=1;
+                        for(var i=0; i<data.length; i++) { %>
+                      <tr>
+                        <td><%=j++%></td>
+                        <td><%=data[i].CountryName%></td>
+                        <td><%=data[i].VisitedCity%></td>
+                        <td><%=data[i].VisitedWith%></td>
+                        <td><%=data[i].FromDate%></td>
+                        <td><%=data[i].ToDate%></td>
+                        <td></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+      </div>
+      
+      
+      <script>
+      $(document).ready( function () {
+          $('#MyVisitsTable').DataTable();
+      } );
+      </script>
+    <%- include footer %>

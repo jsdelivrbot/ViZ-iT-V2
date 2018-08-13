@@ -1,0 +1,402 @@
+<%- include header %>
+
+<body>
+  <div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/home/dashboard">Home</a>
+            </li>
+            <li>
+              <a href="/home/map#<%=country%>">Map</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/home/profile">Profile</a>
+            </li>
+            <li>
+              <a href="/home/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+      <!--/.container-fluid -->
+    </nav>
+
+<% if (message.length > 0) { %>
+  <div class="alert alert-success col-sm-12">
+      <%=message %>
+  </div>
+  <% } %>
+  <div class="app">
+    <div class="app-body">
+
+      <div class="app-section section-map-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#country" data-anchor="europe" data-toggle="tab">Countries Map</a>
+                </li>
+                <li>
+                  <a href="#states" data-anchor="northAmerica" data-toggle="tab">States Map</a>
+                </li>
+
+              </ul>
+              <div class="tab-content">
+                <div id="country" class="tab-pane active">
+                  <div class="section-map-panel">
+                   
+                    <div id="mapdiv"></div>
+
+
+
+
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <h2 class="family-light size-biggerer underline section-map-list-title">Select countries you visited</h2>
+                      <div class="section-map-list">
+                        <ul class="nav nav-tabs">
+                          <li class="active">
+                            <a href="#europe" data-anchor="europe" data-toggle="tab">Europe</a>
+                          </li>
+                          <li>
+                            <a href="#northAmerica" data-anchor="northAmerica" data-toggle="tab">North America</a>
+                          </li>
+                          <li>
+                            <a href="#southAmerica" data-anchor="southAmerica" data-toggle="tab">South America</a>
+                          </li>
+                          <li>
+                            <a href="#africa" data-anchor="africa" data-toggle="tab">Africa</a>
+                          </li>
+                          <li>
+                            <a href="#asia" data-anchor="asia" data-toggle="tab">Asia</a>
+                          </li>
+                          <li>
+                            <a href="#oceania" data-anchor="oceania" data-toggle="tab">Oceania</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content overflow-auto">
+                          <div id="europe" class="tab-pane active">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                          <div id="northAmerica" class="tab-pane">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                          <div id="southAmerica" class="tab-pane">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                          <div id="africa" class="tab-pane">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                          <div id="asia" class="tab-pane">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                          <div id="oceania" class="tab-pane">
+                            <table class="table table-hover table-striped">
+                              <tbody></tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 section-map-settings">
+                      <h2 class="family-light size-biggerer underline">Settings</h2>
+                      <a href="#reset" class="btn btn-default btn-lg btn-block btn-settings-reset" style="margin-top: 40px;">
+                        <i class="fa fa-trash"></i>
+                        <span>Clear map &amp; reset colors</span>
+                      </a>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-xs-4">
+                          <div class="form-group">
+                            <label>Map width</label>
+                            <input type="text" class="form-control" name="width" placeholder="1000px" value="1000px">
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="form-group">
+                            <label>Map height</label>
+                            <input type="text" class="form-control" name="height" placeholder="450px" value="450px">
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="form-group">
+                            <label>
+                              <input type="checkbox" name="zoomControl" checked> Zoom function</label>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <div class="form-group">
+                            <label>Water</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #535364;"></span>
+                              <input class="form-control" name="backgroundColor" type="text" placeholder="#535364" value="#535364" size="7" maxlength="7">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Visited countries</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #84ADE9;"></span>
+                              <input class="form-control" name="colorSolid" type="text" placeholder="#84ADE9" value="#84ADE9" size="7" maxlength="7">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Unvisited countries</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #B4B4B7;"></span>
+                              <input class="form-control" name="color" type="text" placeholder="#B4B4B7" value="#B4B4B7" size="7" maxlength="7">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-6">
+                          <div class="form-group">
+                            <label>Hover countries</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #9EC2F7;"></span>
+                              <input class="form-control" name="rollOverColor" type="text" placeholder="#9EC2F7" value="#9EC2F7" size="7" maxlength="7">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Border</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #666666;"></span>
+                              <input class="form-control" name="outlineColor" type="text" placeholder="#666666" value="#666666" size="7" maxlength="7">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Hover border</label>
+                            <div class="input-group input-colorpicker">
+                              <span class="input-group-addon" style="background-color: #000000;"></span>
+                              <input class="form-control" name="rollOverOutlineColor" type="text" placeholder="#000000" value="#000000" size="7" maxlength="7">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="states" class="tab-pane">
+                  <div class="section-map-panel">
+                    <div style="color: #fff; margin: 200px 32%;font-size: 30px;font-weight: bold;width: 100%;">
+                      Please wait for next release ...
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 70px;">
+            <div class="col-sm-12">
+
+              <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+              <style>
+                .well {
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                  display: none;
+                  margin: 1em;
+                }
+
+                #fadeandscale {
+                  -webkit-transform: scale(0.8);
+                  -moz-transform: scale(0.8);
+                  -ms-transform: scale(0.8);
+                  transform: scale(0.8);
+                }
+
+                .popup_visible #fadeandscale {
+                  -webkit-transform: scale(1);
+                  -moz-transform: scale(1);
+                  -ms-transform: scale(1);
+                  transform: scale(1);
+                }
+
+                .popup-head {
+                  border-bottom: 1px solid #3b3a3a;
+                  padding-bottom: 5px;
+                }
+
+                .x-button {
+                  padding: 6px 5px 10px 5px;
+                  margin: 5px 0;
+                  line-height: 0;
+                  position: absolute;
+                  right: 5px;
+                  top: 0px;
+                  border-radius: 50%;
+                }
+
+                .VisitInfoInputTable tbody tr td {
+                  padding: 2px;
+
+                }
+              </style>
+              <!-- <a class="initialism fadeandscale_open btn btn-success" href="#fadeandscale">Open</a> -->
+              <div id="fadeandscale" class="well form-inline" style="width:420px;">
+                <button class="fadeandscale_close btn btn-danger x-button">x</button>
+                <h4 class="popup-head">Visit Information</h4>
+                <form action="" name="frmVisitInfo" id="frmVisitInfo">
+                  <input type="text" name="CountryCodeHiddenText" id="CountryCodeHiddenText" />
+                  <table style="width: 100%;" class="VisitInfoInputTable">
+                    <tbody>
+                      <tr>
+                        <td>Visit date</td>
+                        <td>:</td>
+                        <td>From
+                          <input class="form-control" type="text" id="txtVisitDateFrom" name="txtVisitDateFrom" style="width: 106px;" /> To
+                          <input class="form-control" type="text" id="txtVisitDateTo" name="txtVisitDateTo" style="width: 106px;" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="vertical-align: top;">Visited with</td>
+                        <td style="vertical-align: top;">:</td>
+                        <td>
+                          <textarea style="width: 100%" class="form-control" type="text" id="txtVisitedWith" name="txtVisitedWith"></textarea>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Visited City</td>
+                        <td>:</td>
+                        <td>
+                          <input class="form-control" type="text" id="txtVisitedCity" name="txtVisitedCity" />
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                          <input class="fadeandscale_close btn btn-default" type="submit" id="cmdSaveVisit" name="cmdSaveVisit" value="Save" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+                <!-- <button class="fadeandscale_close slide_open btn btn-default">Next example</button> -->
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  
+  <script>
+    function getCurrentDate() {
+      var today = new Date();
+      var dd = today.getUTCDate();
+      var mm = today.getUTCMonth() + 1;
+      var yyyy = today.getUTCFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+
+      today = yyyy + '-' + mm + '-' + dd;
+      return today;
+    }
+    $(document).ready(function () {
+      $('#MyVisitsTable').DataTable();
+
+      var now = new Date();
+      //alert(now);
+
+
+      $("#txtVisitDateFrom").val(getCurrentDate());
+      $("#txtVisitDateTo").val(getCurrentDate());
+
+
+
+
+      $('#fadeandscale').popup({
+        pagecontainer: '.container'
+        , transition: 'all 0.3s'
+        //,scrolllock: true
+      });
+      $("#txtVisitDateFrom,#txtVisitDateTo").datepicker({
+        dateFormat: 'yy-mm-dd'
+      });
+      $("#txtVisitDateFrom").change(function () {
+        var f = new Date($("#txtVisitDateFrom").val());
+        var t = new Date($("#txtVisitDateTo").val());
+        if (f != '' && t != '') {
+          if (t < f) {
+            alert('From date cannot be greater than To date.');
+            $("#txtVisitDateFrom").val("");
+          }
+        }
+      });
+      $("#txtVisitDateTo").change(function () {
+        var f = new Date($("#txtVisitDateFrom").val());
+        var t = new Date($("#txtVisitDateTo").val());
+        if (f != '' && t != '') {
+          if (t < f) {
+            alert('From date cannot be greater than To date.');
+            $("#txtVisitDateTo").val("");
+          }
+        }
+      });
+
+      $('#cmdSaveVisit').click(function () {
+        var logindata = {
+          userid: "masud", // $('#txtUserName').val(),
+          cc: $('#CountryCodeHiddenText').val(),
+          vfd: $('#txtVisitDateFrom').val(),
+          vtd: $('#txtVisitDateTo').val(),
+          vwith: $('#txtVisitedWith').val(),
+          vcity: $('#txtVisitedCity').val()
+        };
+
+        //alert(JSON.stringify(logindata));
+
+        $.ajax({
+          url: "/home/saveVisitData",
+          type: "POST",
+          contentType: "application/json",
+          processData: false,
+          data: JSON.stringify(logindata),
+          complete: function (data) {
+            //$('#output').html(data.responseText);
+            //alert('test');
+            location.assign('/home/dashboard');
+          }
+        });
+      });
+    });
+  </script>
+  <%- include footer %>
