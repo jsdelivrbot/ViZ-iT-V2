@@ -1,0 +1,398 @@
+h2.underline {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin: 0 0 20px;
+}
+
+.btn-default {
+    color: #428bca;
+}
+
+.background-lightblue {
+    height: 340px;
+    padding: 0;
+}
+
+.section-map-wrapper {
+    margin: 10px 0;
+    padding: 0 0 0px;
+}
+
+.section-map-panel {
+    background-color: #535364;
+    border-radius: 0 10px 10px 10px;
+    margin: 0 0 70px;
+    padding: 10px;
+    height: 500px;
+}
+
+#mapdiv {
+    height: 100%;
+}
+
+.section-copypaste {
+    padding: 20px 0 80px;
+}
+
+    .section-copypaste h2 {
+        margin: 0 0 20px;
+        line-height: 45px;
+    }
+
+    .section-copypaste .btn {
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 17px;
+    }
+
+.section-cards {
+    background-color: #3a3a41;
+    padding: 0;
+    color: #fff;
+    font-size: 18px;
+}
+
+    .section-cards .col-sm-3 a, .section-cards .col-sm-3 a:hover, .section-cards .col-sm-3 a:focus {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .section-cards .col-sm-3 img {
+        margin: 60px 0 40px;
+    }
+
+    .section-cards .col-sm-3 p {
+        margin: 0 0 40px;
+    }
+
+.section-map-tabs .nav-tabs.nav-justified > li > a {
+    margin: 0;
+    padding: 20px 0 20px 20px;
+    line-height: 60px;
+    font-size: 24px;
+    font-family: lato;
+    font-weight: 300;
+    color: #535364;
+    border: 0;
+}
+
+    .section-map-tabs .nav-tabs.nav-justified > li > a > span {
+        margin: 0;
+        padding: 0 20px 0 0;
+        display: block;
+        border-style: solid;
+        border-width: 0 1px 0 0;
+        border-color: #fff;
+    }
+
+        .section-map-tabs .nav-tabs.nav-justified > li > a > span > span {
+            padding: 0 0 0 15px;
+        }
+
+            .section-map-tabs .nav-tabs.nav-justified > li > a > span > span > strong {
+                font-weight: 400;
+            }
+
+        .section-map-tabs .nav-tabs.nav-justified > li > a > span > i {
+            position: relative;
+            height: 45px;
+            background-image: url(../img/tab_sprite.png);
+            background-repeat: no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+.section-map-tabs .nav-tabs.nav-justified > li.tab-countries > a > span > i {
+    background-position: 0 0;
+    width: 70px;
+}
+
+.section-map-tabs .nav-tabs.nav-justified > li.tab-states > a > span > i {
+    background-position: -90px 0;
+    width: 62px;
+}
+
+.section-map-tabs .nav-tabs.nav-justified > li.tab-editor > a > span > i {
+    background-position: -180px 0;
+    width: 82px;
+}
+
+.section-map-tabs .nav-tabs.nav-justified > li:hover > a {
+    border: 0;
+    background-color: transparent;
+}
+
+.section-map-tabs .nav-tabs.nav-justified > li.active > a {
+    padding: 20px 20px 0;
+    border-radius: 10px 10px 0 0;
+    border-color: #535364;
+    background-color: #535364;
+    color: #fff;
+}
+
+    .section-map-tabs .nav-tabs.nav-justified > li.active > a > span {
+        padding: 0 0 20px;
+        border-width: 0 0 1px;
+        border-color: rgba(255,255,255,.2);
+    }
+
+/* .section-map-list-title {
+    margin: 0 0 -1px !important;
+} */
+
+.section-map-list .nav-tabs > li {
+    background-color: transparent;
+    padding: 0 5px;
+}
+
+    .section-map-list .nav-tabs > li:first-child {
+        padding: 0 5px 0 0;
+    }
+
+    .section-map-list .nav-tabs > li > a {
+        margin: 0;
+    }
+
+.section-map-list .tab-content {
+    height: 365px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-map-list .nav-tabs > li.active, .section-map-list .nav-tabs > li:hover {
+    background-color: #fff;
+}
+
+    .section-map-list .nav-tabs > li.active > a, .section-map-list .nav-tabs > li > a:hover {
+        background-color: #fff;
+        border-bottom: 0;
+    }
+
+textarea.form-control {
+    height: 150px;
+    /* padding: 30px; */
+}
+
+.form-control.focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.btn-share {
+    color: #fff;
+    padding: 0;
+    line-height: 32px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    margin: 7px 7px 3px 0;
+    opacity: 1;
+    transition: all 500ms cubic-bezier(.77,0,.175,1);
+    -webkit-transition: all 500ms cubic-bezier(.77,0,.175,1);
+    -moz-transition: all 500ms cubic-bezier(.77,0,.175,1);
+    -o-transition: all 500ms cubic-bezier(.77,0,.175,1);
+}
+
+    .btn-share:hover, .btn-share:focus, .btn-share:active {
+        opacity: .8;
+        color: #fff;
+    }
+
+.btn-facebook, .btn-facebook:hover, .btn-facebook:focus, .btn-facebook.disabled {
+    background-color: #4966b6;
+}
+
+.btn-twitter, .btn-twitter:hover, .btn-twitter:focus, .btn-twitter.disabled {
+    background-color: #7cd3ff;
+}
+
+.btn-google-plus, .btn-google-plus:hover, .btn-google-plus:focus, .btn-google-plus.disabled {
+    background-color: #5b5b5b;
+}
+
+.btn-tumblr, .btn-tumblr:hover, .btn-tumblr:focus, .btn-tumblr.disabled {
+    background-color: #4d6982;
+}
+
+.btn-linkedin, .btn-linkedin:hover, .btn-linkedin:focus, .btn-linkedin.disabled {
+    background-color: #2967ad;
+}
+
+.btn-pinterest, .btn-pinterest:hover, .btn-pinterest:focus, .btn-pinterest.disabled {
+    background-color: #fa5c5c;
+}
+
+.btn-reddit, .btn-reddit:hover, .btn-reddit:focus, .btn-reddit.disabled {
+    background-color: #f33f00;
+}
+
+.btn-share.disabled {
+    opacity: .4;
+}
+
+.btn-facebook, .btn-twitter {
+    line-height: 48px;
+    width: auto;
+    height: auto;
+    margin: 0 25px 10px 0;
+    padding: 6px 14px;
+}
+
+    .btn-facebook i, .btn-twitter i {
+        font-size: 180%;
+        line-height: 48px;
+    }
+
+    .btn-facebook span, .btn-twitter span {
+        padding: 0 55px;
+    }
+
+.btn-beammeupscotty {
+    background-color: #fff;
+    color: #525261;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+    padding: 5px 20px;
+    border-radius: 0 0 7px 7px;
+}
+
+    .btn-beammeupscotty:hover, .btn-beammeupscotty:focus {
+        text-decoration: none;
+        color: #525261;
+    }
+
+.app-footer {
+    position: relative;
+    z-index: 55;
+}
+
+@media(max-width:1200px) {
+    .section-map-tabs .nav-tabs.nav-justified {
+        height: 161px;
+    }
+}
+
+@media(max-width:992px) {
+    .btn-facebook span, .btn-twitter span {
+        padding: 0 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .section-cards {
+        overflow: hidden;
+    }
+
+    .app-footer .col-sm-12 > div {
+        float: none !important;
+        width: 100% !important;
+    }
+
+    .section-map-tabs .nav-tabs.nav-justified {
+        height: auto;
+    }
+
+        .section-map-tabs .nav-tabs.nav-justified > li {
+            display: table-cell;
+            width: 1%;
+        }
+
+            .section-map-tabs .nav-tabs.nav-justified > li > a > span > span {
+                display: none;
+            }
+}
+
+.colorpicker {
+    width: 215px !important;
+}
+
+    .colorpicker div {
+        display: none;
+    }
+
+    .colorpicker .colorpicker_color, .colorpicker .colorpicker_color div, .colorpicker .colorpicker_hue, .colorpicker .colorpicker_hue div {
+        display: block;
+    }
+
+.amcharts-menu-projection {
+    bottom: 85px !important;
+    left: 25px !important;
+}
+
+.section-map-panel:hover .amcharts-menu-projection {
+    opacity: 1;
+}
+
+.amcharts-menu-projection li > ul > li > a {
+    padding-left: 80px;
+    line-height: 30px;
+    background-repeat: no-repeat;
+    background-position: 10px;
+}
+
+.amcharts-menu-projection li.icon-mercator > a {
+    background-size: 53px 50px;
+    background-image: url(../img/projections/gray/mercator%402x.png);
+}
+
+.amcharts-menu-projection li.icon-mercator:focus > a, .amcharts-menu-projection li.icon-mercator:hover > a, .menu-projection.icon-mercator {
+    background-size: 53px 50px;
+    background-image: url(../img/projections/blue/mercator%402x.png);
+}
+
+.amcharts-menu-projection li.icon-miller > a {
+    background-size: 53px 38px;
+    background-image: url(../img/projections/gray/miller%402x.png);
+}
+
+.amcharts-menu-projection li.icon-miller:focus > a, .amcharts-menu-projection li.icon-miller:hover > a, .menu-projection.icon-miller {
+    background-size: 53px 38px;
+    background-image: url(../img/projections/blue/miller%402x.png);
+}
+
+.amcharts-menu-projection li.icon-equirectangular > a {
+    background-size: 53px 28px;
+    background-image: url(../img/projections/gray/equa%402x.png);
+}
+
+.amcharts-menu-projection li.icon-equirectangular:focus > a, .amcharts-menu-projection li.icon-equirectangular:hover > a, .menu-projection.icon-equirectangular {
+    background-size: 53px 28px;
+    background-image: url(../img/projections/blue/equa%402x.png);
+}
+
+.amcharts-menu-projection li.icon-winkel3 > a {
+    background-size: 51px 34px;
+    background-image: url(../img/projections/gray/winkel%402x.png);
+}
+
+.amcharts-menu-projection li.icon-winkel3:focus > a, .amcharts-menu-projection li.icon-winkel3:hover > a, .menu-projection.icon-winkel3 {
+    background-size: 51px 34px;
+    background-image: url(../img/projections/blue/winkel%402x.png);
+}
+
+.amcharts-menu-projection li.icon-eckert3 > a {
+    background-size: 51px 29px;
+    background-image: url(../img/projections/gray/eckert3%402x.png);
+}
+
+.amcharts-menu-projection li.icon-eckert3:focus > a, .amcharts-menu-projection li.icon-eckert3:hover > a, .menu-projection.icon-eckert3 {
+    background-size: 51px 29px;
+    background-image: url(../img/projections/blue/eckert3%402x.png);
+}
+
+.amcharts-menu-projection li.icon-eckert5 > a {
+    background-size: 51px 29px;
+    background-image: url(../img/projections/gray/eckert5%402x.png);
+}
+
+.amcharts-menu-projection li.icon-eckert5:focus > a, .amcharts-menu-projection li.icon-eckert5:hover > a, .menu-projection.icon-eckert5 {
+    background-size: 51px 29px;
+    background-image: url(../img/projections/blue/eckert5%402x.png);
+}
+
+.amcharts-menu-projection li.export-main > a, .amcharts-menu-projection li.export-main:hover > a, .amcharts-menu-projection li.export-main:focus > a {
+    background-size: cover;
+}
