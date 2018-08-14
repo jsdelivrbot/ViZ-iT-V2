@@ -1,84 +1,303 @@
 <%- include header %>
 
-<body>
-  <div class="container">
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="/home/dashboard">Home</a>
-            </li>
-            <li>
-              <a href="/home/map#<%=country%>">Map</a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="/home/profile">Profile</a>
-            </li>
-            <li>
-              <a href="/home/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.nav-collapse -->
-      </div>
-      <!--/.container-fluid -->
-    </nav>
+    <body>
+        <link type="text/css" rel="stylesheet" href="/resources/ThirdParty/DataTables/media/css/jquery.dataTables.css">
+        <link type="text/css" rel="stylesheet" href="/resources/ThirdParty/DataTables/extensions/TableTools/css/dataTables.tableTools.min.css">
+        <link type="text/css" rel="stylesheet" href="/resources/ThirdParty/DataTables/media/css/dataTables.bootstrap.css">
+        <style type="text/css">
+            @media print {
+                .no-print {
+                    display: none;
+                }
+            }
+        </style>
+        <div class="container">
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/home/dashboard">Home</a>
+                            </li>
+                            <li>
+                                <a href="/home/map#<%=country%>">Map</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/home/profile">Profile</a>
+                            </li>
+                            <li>
+                                <a href="/home/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
 
 
-      <div class="welcome">
-         
-        <!-- <h1>Welcome</h1>
+            <div class="welcome">
+
+                <!-- <h1>Welcome</h1>
         <p>Hello Mr. <%=user.last_name%></p> -->
-        <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                My Visited Country, City, Places
-              </h3>
-              
-            </div>
-            <div class="panel-body">
-              
-              <div>
-                  <table class="display" id="MyVisitsTable" >
-                    <thead>
-                      <tr>
-                        <th>SL</th>
-                        <th>Country</th>
-                        <th>City/Place</th>
-                        <th>Travelmates</th>
-                        <th colspan="2">Duration</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <% 
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            My Visited Country, City, Places
+                        </h3>
+
+                    </div>
+                    <div class="panel-body">
+
+                        <div>
+                            <table class="table table-striped table-hover" id="MyVisitsTable">
+                                <thead>
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Country</th>
+                                        <th>City/Place</th>
+                                        <th>Travelmates</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th class="no-print">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
                         var j=1;
                         for(var i=0; i<data.length; i++) { %>
-                      <tr>
-                        <td><%=j++%></td>
-                        <td><%=data[i].CountryName%></td>
-                        <td><%=data[i].VisitedCity%></td>
-                        <td><%=data[i].VisitedWith%></td>
-                        <td><%=data[i].FromDate%></td>
-                        <td><%=data[i].ToDate%></td>
-                        <td></td>
-                      </tr>
-                      <% } %>
-                    </tbody>
-                  </table>
+                                        <tr>
+                                            <td>
+                                                <%=j++%>
+                                            </td>
+                                            <td>
+                                                <%=data[i].CountryName%>
+                                            </td>
+                                            <td>
+                                                <%=data[i].VisitedCity%>
+                                            </td>
+                                            <td>
+                                                <%=data[i].VisitedWith%>
+                                            </td>
+                                            <td>
+                                                <%=data[i].FromDate%>
+                                            </td>
+                                            <td>
+                                                <%=data[i].ToDate%>
+                                            </td>
+                                            <td class="no-print">
+                                                <a name="edit" href="#" id="<%=data[i].VisitId%>" class="initialism fadeandscale_open"><i
+                                                        class="fa fa-edit" style="font-size: 20px;color:#4a21df;margin-right: 20px;"></i></a>
+                                                <a href="#"><i id="<%=data[i].VisitId%>" class="fa fa-trash" style="font-size: 20px;color:#ff0000;"></i></a>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-          </div>
-      </div>
-      
-      
-      <script>
-      $(document).ready( function () {
-          $('#MyVisitsTable').DataTable();
-      } );
-      </script>
-    <%- include footer %>
+
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <style>
+                .well {
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                    display: none;
+                    margin: 1em;
+                }
+
+                #fadeandscale {
+                    -webkit-transform: scale(0.8);
+                    -moz-transform: scale(0.8);
+                    -ms-transform: scale(0.8);
+                    transform: scale(0.8);
+                }
+
+                .popup_visible #fadeandscale {
+                    -webkit-transform: scale(1);
+                    -moz-transform: scale(1);
+                    -ms-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                .popup-head {
+                    border-bottom: 1px solid #3b3a3a;
+                    padding-bottom: 5px;
+                }
+
+                .x-button {
+                    padding: 6px 5px 10px 5px;
+                    margin: 5px 0;
+                    line-height: 0;
+                    position: absolute;
+                    right: 5px;
+                    top: 0px;
+                    border-radius: 50%;
+                }
+
+                .VisitInfoInputTable tbody tr td {
+                    padding: 2px;
+
+                }
+            </style>
+            <!-- <a class="initialism fadeandscale_open btn btn-success" href="#fadeandscale">Open</a> -->
+            <div id="fadeandscale" class="well form-inline" style="width:420px;">
+                <button class="fadeandscale_close btn btn-danger x-button">x</button>
+                <h4 class="popup-head">Visit Information</h4>
+                <form action="" name="frmVisitInfo" id="frmVisitInfo">
+                    <input type="text" name="txtVisitId" id="txtVisitId" />
+                    <table style="width: 100%;" class="VisitInfoInputTable">
+                        <tbody>
+                            <tr>
+                                <td>Visit date</td>
+                                <td>:</td>
+                                <td>From
+                                    <input class="form-control" type="text" id="txtVisitDateFrom" name="txtVisitDateFrom" style="width: 106px;" />                                    To
+                                    <input class="form-control" type="text" id="txtVisitDateTo" name="txtVisitDateTo" style="width: 106px;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: top;">Visited with</td>
+                                <td style="vertical-align: top;">:</td>
+                                <td>
+                                    <textarea style="width: 100%" class="form-control" type="text" id="txtVisitedWith" name="txtVisitedWith"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Visited City</td>
+                                <td>:</td>
+                                <td>
+                                    <input class="form-control" type="text" id="txtVisitedCity" name="txtVisitedCity" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <input class="fadeandscale_close btn btn-default" type="submit" id="cmdUpdateVisit" name="cmdUpdateVisit" value="Update" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <!-- <button class="fadeandscale_close slide_open btn btn-default">Next example</button> -->
+
+            </div>
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#MyVisitsTable').DataTable();
+                    $("#txtVisitDateFrom,#txtVisitDateTo").datepicker({
+                        dateFormat: 'yy-mm-dd'
+                    });
+                    $('#fadeandscale').popup({
+                        pagecontainer: '.container'
+                        , transition: 'all 0.3s'
+                        , blur: false
+                        //,scrolllock: true
+                        , onopen: function () {
+                            //alert(JSON.stringify($(this)));
+
+                        }
+
+                    });
+                    $('a[name="edit"]').click(function () {
+                        var vid = this.id
+                        //alert(vid);
+                        //return;
+
+                        $.ajax({
+                            url: "/home/getVisitInfo",
+                            type: "POST",
+                            contentType: "application/json",
+                            processData: false,
+                            data: JSON.stringify({ vid: vid }),
+                            complete: function (data) {
+                                //console.log(data.responseText);
+                                obj = JSON.parse(data.responseText);
+                                //console.log(obj[0].FromDate);
+                                $('#txtVisitDateFrom').val(obj[0].FromDate);
+                                $('#txtVisitDateTo').val(obj[0].ToDate),
+                                $('#txtVisitedWith').val(obj[0].VisitedWith),
+                                $('#txtVisitedCity').val(obj[0].VisitedCity)
+                                $('#txtVisitId').val(obj[0].VisitId)
+
+                                //window.location.reload('/home/map#' + data.responseText);
+                                // location.reload();
+                            }
+                        });
+                        $.fn.popup.defaults.pagecontainer = '.container'
+                    });
+
+
+
+
+
+                    $('#cmdUpdateVisit').click(function () {
+                        var VisitData = {
+                            vid: $('#txtVisitId').val(),
+                            vfd: $('#txtVisitDateFrom').val(),
+                            vtd: $('#txtVisitDateTo').val(),
+                            vwith: $('#txtVisitedWith').val(),
+                            vcity: $('#txtVisitedCity').val()
+                        };
+
+                        //alert(JSON.stringify(VisitData));
+
+                        $.ajax({
+                            url: "/home/updateVisitData",
+                            type: "POST",
+                            contentType: "application/json",
+                            processData: false,
+                            data: JSON.stringify(VisitData),
+                            complete: function (data) {
+                                //$('#output').html(data.responseText);
+                                //alert(JSON.stringify(data));
+                                //alert($('#visitedCC').val());
+                                $('#txtVisitId').val('');
+                                $('#txtVisitDateFrom').val('');
+                                $('#txtVisitDateTo').val('');
+                                $('#txtVisitedWith').val('');
+                                $('#txtVisitedCity').val('');
+                                window.location.reload('/home/dashboard');
+                                // location.reload();
+                            }
+                        });
+                    });
+
+                    //Delete
+                    $(".fa-trash").click(function () {
+                        var VisitData = {
+                            vid: $(this).attr('id')
+                        };
+
+                        //alert(JSON.stringify(VisitData));
+                        //                        return;
+                        $.ajax({
+                            url: "/home/deleteVisitData",
+                            type: "POST",
+                            contentType: "application/json",
+                            processData: false,
+                            data: JSON.stringify(VisitData),
+                            complete: function (data) {
+                                //$('#output').html(data.responseText);
+                                //alert(JSON.stringify(data));
+                                //alert($('#visitedCC').val());
+                                window.location.reload('/home/map#' + data.responseText);
+                                // location.reload();
+                            }
+                        });
+                    });
+                });
+            </script>
+            <script src="/resources/ThirdParty/DataTables/media/js/jquery.dataTables.js"></script>
+            <script src="/resources/ThirdParty/DataTables/media/js/dataTables.bootstrap.js"></script>
+            <script src="/resources/ThirdParty/DataTables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+            <%- include footer %>

@@ -50,6 +50,9 @@ app.get('/home/profile', user.profile);//to render users profile
 
 app.get('/home/map', user.map);//call for 
 app.post('/home/saveVisitData', user.saveVisitData);//call for 
+app.post('/home/deleteVisitData', user.deleteVisitData);//call for 
+app.post('/home/getVisitInfo', user.getVisitInfo);//call for
+app.post('/home/updateVisitData', user.updateVisitData);//call for
 
 //Middleware
 app.listen(app.get('port'), function() {

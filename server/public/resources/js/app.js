@@ -14,10 +14,12 @@ function getUrlVars() {
 
 // }
 
-jQuery(document).ready(function () {
+var map;
+
+jQuery(document).ready(function() {
 
 
-    
+
     // var str = $("#visitedCC").val().replace('&#34;','"');
     // alert(str);
     // var VisitedCC = Array(str);
@@ -66,7 +68,7 @@ jQuery(document).ready(function () {
             selectable: true
         }
     });
-    map.addListener("clickMapObject", function (event) {
+    map.addListener("clickMapObject", function(event) {
         var CC = event.mapObject.id;
         var checkbox = jQuery("input[value=" + CC + "]");
         var anchor = jQuery(checkbox).parents(".tab-pane").attr("id");
@@ -79,9 +81,9 @@ jQuery(document).ready(function () {
 
 
     });
-    map.updateSelection = function (gatherOnly) {
+    map.updateSelection = function(gatherOnly) {
         var areas = [];
-        jQuery(".section-map-list input:checked").each(function () {
+        jQuery(".section-map-list input:checked").each(function() {
             var CC = this.value;
             //alert(CC);
             areas.push({
@@ -96,23 +98,23 @@ jQuery(document).ready(function () {
         }
         return areas;
     }
-    map.updateHash = function () {
+    map.updateHash = function() {
         var inputs = jQuery(".section-map-list input:checked");
-        location.hash = jQuery.map(inputs, function (input) {
+        location.hash = jQuery.map(inputs, function(input) {
             return input.value
         }).join(",");
         //alert(location.hash);
     }
 
-    jQuery(AmCharts.maps.worldHigh.svg.g.path).each(function () {
+    jQuery(AmCharts.maps.worldHigh.svg.g.path).each(function() {
         if (this.title !== undefined)
             names[this.id] = this.title.replace(/x28/g, '(').replace(/x29/g, ')').replace(/x2C/g, ',');
     });
-    jQuery(".section-map-list").each(function () {
+    jQuery(".section-map-list").each(function() {
 
-        jQuery.map(lists, function (list, name) {
+        jQuery.map(lists, function(list, name) {
             var tbody = jQuery("#" + name).find("tbody");
-            list.sort(function (x, y) {
+            list.sort(function(x, y) {
                 var a = names[x].toLowerCase(),
                     b = names[y].toLowerCase();
                 if (a > b)
@@ -121,11 +123,11 @@ jQuery(document).ready(function () {
                     return -1;
                 return 0;
             });
-            jQuery(list).each(function () {
+            jQuery(list).each(function() {
                 var CC = String(this);
                 var row = jQuery("<tr>").appendTo(tbody);
                 var col = jQuery("<td>").appendTo(row);
-                var lnk = jQuery("<a>").appendTo(col).attr({href: "#fadeandscale"}).addClass("initialism fadeandscale_open");
+                var lnk = jQuery("<a>").appendTo(col).attr({ href: "#fadeandscale" }).addClass("initialism fadeandscale_open");
                 var div = jQuery("<div>").appendTo(lnk).addClass("checkbox");
                 var label = jQuery("<label>").appendTo(div).text(names[CC]);
                 var checkbox = jQuery("<input>").attr({
@@ -133,7 +135,7 @@ jQuery(document).ready(function () {
                     name: "map",
                     value: this,
                 }).prependTo(label);
-                row.on("click", function () {
+                row.on("click", function() {
                     // console.log(VisitedCC.indexOf(CC));
                     // if(VisitedCC.indexOf(CC) != -1){
                     //     console.log(CC);
@@ -149,7 +151,7 @@ jQuery(document).ready(function () {
         });
     });
 
-    
+
     // jQuery(".checkbox").on("click", function (e) {
     //     e.preventDefault();
     //     alert(.val());
@@ -157,7 +159,7 @@ jQuery(document).ready(function () {
 
     // });
 
-    jQuery(".btn-settings-reset").on("click", function (e) {
+    jQuery(".btn-settings-reset").on("click", function(e) {
         e.preventDefault();
         alert('Please wait for next release...');
     });
@@ -165,7 +167,7 @@ jQuery(document).ready(function () {
         var areas = (getUrlVars()["cc"] ? getUrlVars()["cc"] : location.hash).replace("#", "").split(",");
         //var areas = VisitedCC.split(",");
         //console.log(areas);
-        jQuery(areas).each(function () {
+        jQuery(areas).each(function() {
 
             jQuery(".section-map-list input[value=" + this + "]").prop("checked", true);
         });
@@ -174,9 +176,9 @@ jQuery(document).ready(function () {
 
 
     var resizeTimer = 0;
-    jQuery(window).on("resize", function () {
+    jQuery(window).on("resize", function() {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
+        resizeTimer = setTimeout(function() {
             if (jQuery(window).width() <= 480) {
                 jQuery(".form-control").addClass("input-lg");
             } else {
@@ -186,4 +188,3 @@ jQuery(document).ready(function () {
     });
 
 });
-
